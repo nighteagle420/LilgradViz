@@ -1,10 +1,10 @@
 import numpy as np
 
-def list(data):
-    if isinstance(data,list):
-        return data
-    else:
-        return data.tolist()
+# def list(data):
+#     if isinstance(data,list):
+#         return data
+#     else:
+#         return data.tolist()
 def array(data):
     if isinstance(data,np.ndarray):
         return data
@@ -19,16 +19,17 @@ def Tval(data):
         return TensorVal(data)
 
 class TensorVal:
-    def __init__(self, data, _children=(), _op=''):
+    def __init__(self, data, _children=(), _op='',label=""):
         self.data = array(data)
         self.grad = np.zeros_like(self.data,dtype=np.float64)
         self._backward = lambda: None
         self._prev = set(_children)
         self.shape = self.data.shape
         self._op = _op
+        self.label = label
         
     def __repr__(self) -> str:
-        return f"""TensorVal({self.data})"""
+        return f"""TensorVal[{self.label}]({self.data})"""
     
     def zero_grad(self):
         visited = set()
