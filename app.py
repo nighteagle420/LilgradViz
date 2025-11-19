@@ -19,8 +19,8 @@ if "operation_history" not in st.session_state:
 #     st.session_state.graph = None
 if "final_tensor_label" not in st.session_state:
     st.session_state.final_tensor_label = None
-if "gradient_data" not in st.session_state:
-    st.session_state.gradient_data = None
+if "gradients_data" not in st.session_state:
+    st.session_state.gradients_data = None
     
 st.sidebar.header("1. Create Tensors")
 
@@ -291,7 +291,7 @@ if len(available_tensors) >= 2:
 
 def draw_graph():
     graph = gv.Digraph('G', engine='dot')
-    graph.attr(rankdir='TB')
+    graph.attr(rankdir='TB',size='6,6', dpi='72', fontsize='10')
     
     tensor_nodes = set()
     op_nodes = set()
@@ -362,7 +362,7 @@ if st.session_state.final_tensor_label:
         
     
 st.sidebar.markdown("---")
-st.sidebar.header("4. Maintainance and Controls")
+st.sidebar.header("4. Maintainance")
 if st.sidebar.button("Reset App"):
     st.session_state.tensors = {}
     st.session_state.operation_history = []
