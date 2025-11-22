@@ -7,7 +7,7 @@ import ast
 # from your_autodiff_module import Tensor, backward
 from engine import *
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 st.title("LilGradViz - Automatic Differentiation with Visualization")
 
 # Initialize session state variables
